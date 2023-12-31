@@ -1,0 +1,16 @@
+
+  .navbar {
+    background-color: #9e2727; }
+
+  .navbar-brand {
+    font-weight: bold;
+  }
+
+  .navbar-nav {
+    margin-left: auto;
+  }
+
+  .navbar-nav .nav-item {
+    margin-right: 15px;
+  }
+

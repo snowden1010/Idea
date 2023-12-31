@@ -1,0 +1,60 @@
+{% extends 'Products/base.html' %}
+
+{% block content %}
+
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #45a049; color: #fff;">
+    <a class="navbar-brand" href="#" style="font-weight: bold; color: #fff;">Shoppy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color: #fff;">Hi {{ fname }}!</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/signout" style="color: #fff;">SignOut</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/signup" style="color: #fff;">SignUp</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/signin" style="color: #fff;">SignIn</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <div class="messages">
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="submit" class="close" data-dismiss="alert" aria-label="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h1 style="color: #45a049;">Products</h1>
+
+  <div class="row">
+    {% for i in '012345678911' %}
+      <div class="col">
+        <div class="card" style="width: 18rem; border: 1px solid #45a049; border-radius: 10px; margin-bottom: 20px;">
+          <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body">
+            <h5 class="card-title" style="color: #45a049;">{{ product.name }}</h5>
+            <p class="card-text" style="color: #333;">${{ product.price }}</p>
+            <p class="card-text" style="color: #333;">{{ product.stock }} Available at stock</p>
+            <a href="#" class="btn btn-primary" style="background-color: #45a049; border-color: #45a049;">Add To Cart</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

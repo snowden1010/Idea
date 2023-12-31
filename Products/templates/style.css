@@ -1,0 +1,10 @@
+.name{
+    font-weight: bold;
+    font-family: monospace;
+    color: rgb(1, 59, 92);
+}
+.price, .stock{
+    font-family: 34px;
+    color: red;
+
+}
